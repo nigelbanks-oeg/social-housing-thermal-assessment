@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Housing Thermal Assessment Tool | Octopus Energy × Healthy Homes Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .gradient-brand {
+      background: linear-gradient(135deg, #7c3aed 0%, #059669 100%);
+    }
+    .octopus-purple {
+      color: #7c3aed;
+    }
+  </style>
+</head>
+<body class="bg-slate-50">
+
+  <!-- Navigation Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <!-- HHH Logo -->
+        <img src="https://healthyhomeshub.uk/images/logo-white.svg" alt="Healthy Homes Hub" class="h-8 bg-slate-900 px-2 py-1 rounded">
+        <span class="text-slate-400">×</span>
+        <!-- Octopus Energy Logo -->
+        <img src="https://octopus.energy/documents/8310/Screenshot_2026-02-05_at_12.22.43.png" alt="Octopus Energy" class="h-8">
+      </div>
+      <nav class="flex items-center gap-6">
+        <a href="#tool" class="text-sm font-semibold text-slate-700 hover:text-slate-900">Open Tool</a>
+        <a href="#methodology" class="text-sm font-semibold text-slate-700 hover:text-slate-900">Methodology</a>
+        <a href="#about" class="text-sm font-semibold text-slate-700 hover:text-slate-900">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="gradient-brand text-white py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+        Understanding Home Heating<br>Health & Affordability
+      </h1>
+      <p class="text-lg md:text-xl opacity-95 mb-8 max-w-2xl">
+        An interactive tool for assessing thermal comfort, health compliance, and heating costs in social housing. Explore how building fabric, heating systems, and energy tariffs impact residents' wellbeing and financial security.
+      </p>
+      <a href="#tool" class="inline-block bg-white text-purple-700 font-bold px-8 py-3 rounded-lg hover:bg-slate-100 transition">
+        Launch Assessment Tool →
+      </a>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <main class="max-w-4xl mx-auto px-4 py-16">
+
+    <!-- Context Section -->
+    <article class="prose prose-sm max-w-none">
+
+      <h2 class="text-3xl font-bold text-slate-900 mb-6">Why This Matters</h2>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        Cold homes kill. In the UK, excess cold is linked to over 10,000 excess winter deaths annually—predominantly among older people, children, and those with chronic conditions. The relationship between indoor temperature, health outcomes, and fuel poverty forms a complex but solvable puzzle for social housing providers.
+      </p>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        This assessment tool bridges the gap between theoretical compliance (Awaab's Law, HHSRS standards, WHO guidance) and real-world tenant experience. It models how three interconnected factors shape the thermal comfort a household achieves:
+      </p>
+
+      <div class="bg-amber-50 border-l-4 border-amber-500 p-6 my-8 rounded">
+        <h3 class="font-bold text-amber-900 mb-3">What Determines Weekly Heating Budget?</h3>
+        <p class="text-sm text-amber-900 mb-3">
+          A household's available heating budget depends on income, welfare support, and energy bills:
+        </p>
+        <ul class="text-sm text-amber-900 space-y-2 mb-3">
+          <li>• <strong>Income & benefits:</strong> Tenants in social housing often rely on Universal Credit, Housing Benefit, or state pensions—capped at modest levels.</li>
+          <li>• <strong>Energy cost burden:</strong> On low income, energy bills can consume 15–30% of disposable income (compared to 3–5% for higher earners).</li>
+          <li>• <strong>Standing charges:</strong> Electricity standing charges (£50+/month) and gas (£35+/month) consume 40–60% of available heating budget before any kWh is purchased.</li>
+        </ul>
+        <p class="text-sm font-semibold text-amber-900">
+          £25/week (~£1,300/year) is a realistic estimate for discretionary heating spend in social housing after standing charges and other essential utilities. Some households have £15/week; fewer have £40+/week. This tool uses £25 as the typical scenario, but you can adjust to model your portfolio's actual budget distribution.
+        </p>
+      </div>
+
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-6 my-8 rounded">
+        <h3 class="font-bold text-blue-900 mb-3">The Three Pillars of Thermal Comfort</h3>
+        <ul class="space-y-3 text-slate-700">
+          <li><strong>Building Fabric & Ventilation:</strong> Wall insulation, air-tightness, thermal mass, and ventilation rates determine how much and how fast heat escapes—and how moisture accumulates indoors. From solid-wall Victorian terraces (HLP 4.5 W/m²K) to Passivhaus retrofits (0.6), the gap is 7.5×. Ventilation is critical: poor air exchange traps moisture and drives condensation and mould proliferation even in warm homes.</li>
+          <li><strong>Heating Technology:</strong> Gas boilers, heat pumps, and smart tariffs convert purchased energy into delivered warmth at vastly different efficiency levels. An Octopus Cosy Heat Pump on a smart tariff delivers 4.8× more warmth per kWh purchased than a high-flow gas boiler (3.80 SPF ÷ 0.78 efficiency).</li>
+          <li><strong>Available Budget:</strong> Weekly heating spend—shaped by income, benefit levels, and energy prices—determines how many kWh households can afford. At £25/week and 10p/kWh, that's only ~36 kWh per week of delivered heat, which may not reach 18°C.</li>
+        </ul>
+      </div>
+
+      <h2 class="text-3xl font-bold text-slate-900 mb-6 mt-12">Clinical Evidence & Compliance</h2>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        Multiple evidence bases inform our thermal thresholds:
+      </p>
+
+      <ul class="space-y-4 text-slate-700 mb-6">
+        <li><strong>WHO Living Conditions Standard (21°C):</strong> Optimal thermal comfort and cardiovascular health across all demographics.</li>
+        <li><strong>Marmot Review (2011):</strong> Below 16°C, blood viscosity spikes, heart attack and stroke risk increases sharply. This is the harm boundary.</li>
+        <li><strong>UK HHSRS (Housing Health & Safety Rating System):</strong> Excess Cold is a Category 1 Hazard below 18°C in living areas.</li>
+        <li><strong>Awaab's Law (Social Housing Regulation Act 2023):</strong> Landlords must investigate and remediate condensation-driven mould within statutory timeframes. Dew-point condensation triggers reliably below 16°C in uninsulated homes.</li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-slate-900 mb-6 mt-12">Energy Price Cap & Tariff Options</h2>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        This tool reflects October 2026 confirmed price cap rates and a Q1 2027 forecast based on wholesale trends:
+      </p>
+
+      <div class="bg-emerald-50 border border-emerald-200 p-6 rounded mb-6">
+        <p class="text-sm text-slate-600"><strong>October 2026 (Confirmed):</strong> Gas 7.97p/kWh, Electricity 26.32p/kWh</p>
+        <p class="text-sm text-slate-600 mt-2"><strong>January 2027 Forecast:</strong> Gas 9.76p/kWh (+22%), Electricity 30.28p/kWh (+15%)</p>
+        <p class="text-xs text-slate-500 mt-3">Source: <a href="https://www.cornwall-insight.com" class="text-emerald-700 underline">Cornwall Insight Q1 2027 Report</a></p>
+      </div>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        Octopus Energy's Tenant Power tariff—a landmark initiative for social housing—applies a flat 30% discount on electricity across all times of day, with no requirement to shift usage. This reduces the running costs of electric heating systems (heat pumps, direct electric), as well as household baseload consumption (lights, fridge, heating controls), saving tenants ~£213/year in addition to heating savings.
+      </p>
+
+      <h2 class="text-3xl font-bold text-slate-900 mb-6 mt-12">How the Tool Works</h2>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        The assessment tool is built on three computational engines:
+      </p>
+
+      <div class="space-y-6 mb-8">
+        <div class="border border-slate-200 p-5 rounded-lg">
+          <h4 class="font-bold text-slate-900 mb-2">1. Thermal Steady-State Model</h4>
+          <p class="text-slate-700 text-sm">Given an external temperature, building heat loss (floor area × HLP), internal gains (250W occupancy/appliances), and available heating budget, calculates the achieved indoor temperature. Iterates across user inputs in real-time.</p>
+        </div>
+
+        <div class="border border-slate-200 p-5 rounded-lg">
+          <h4 class="font-bold text-slate-900 mb-2">2. Heating System Efficiency Matrix</h4>
+          <p class="text-slate-700 text-sm">Compares 17 heating system & tariff combinations (gas boilers, heat pumps, electric direct, Octopus smart tariffs). Each has empirically calibrated efficiency curves or COP values. <a href="https://octopus.energy/cosy-heat-pump-performance/" class="text-emerald-700 font-semibold underline hover:text-emerald-800">Octopus Cosy Heat Pump SPF 3.80</a> is drawn from real-world performance data.</p>
+        </div>
+
+        <div class="border border-slate-200 p-5 rounded-lg">
+          <h4 class="font-bold text-slate-900 mb-2">3. Degree-Hour Seasonal Model</h4>
+          <p class="text-slate-700 text-sm">Projects 30-week heating season (October–April) across six UK regions with region-specific weekly external temperatures. Calculates annual delivered heat demand, cost, and weeks in budget deficit. Flags statutory compliance risks (HHSRS, Awaab's Law).</p>
+        </div>
+      </div>
+
+      <h2 class="text-3xl font-bold text-slate-900 mb-6 mt-12">Real-World Scenario: A Typical Social Housing Property</h2>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        Consider a 70 m² property in the Midlands (typical UK average climate) with:
+      </p>
+
+      <ul class="space-y-2 text-slate-700 mb-6">
+        <li>• <strong>Building:</strong> Decent Homes standard (HLP 2.0 W/m²K, EPC C)</li>
+        <li>• <strong>Heating:</strong> Gas boiler on standard tariff (78% efficiency)</li>
+        <li>• <strong>Tenant Budget:</strong> £25/week available for heating</li>
+        <li>• <strong>External Temp:</strong> 2°C (typical UK winter)</li>
+      </ul>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        <strong>Outcome:</strong> At £25/week, the tenant achieves 18.4°C—just within HHSRS compliance, but below WHO comfort. To reach 21°C comfort would require £38.70/week (£13.70 deficit). In the coldest mid-winter week (January), heating alone costs £36.40/week, creating an £11.40 budget shortfall.
+      </p>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        <strong>Policy Lever:</strong> Switching to an Octopus Cosy Heat Pump on Tenant Power tariff reduces the £38.70 cost to ~£18.50/week for 21°C comfort—a 52% saving. The combination of higher efficiency (3.79 COP) and tariff discount (30% off electricity) closes the affordability gap.
+      </p>
+
+      <h2 class="text-3xl font-bold text-slate-900 mb-6 mt-12">Key Insights for Housing Providers</h2>
+
+      <ul class="space-y-4 text-slate-700 mb-6">
+        <li><strong>Budget deficits are endemic, not anomalous.</strong> Most households on £15–30/week budgets fall short of 21°C comfort in winter, even with efficient heating. Retrofitting insulation and upgrading heating technology are not optional nice-to-haves—they are statutory compliance pathways.</li>
+
+        <li><strong>Heat pump + smart tariff + smart controls = the affordability multiplier.</strong> The combination of higher efficiency, off-peak pricing, and automated comfort delivers 50–60% savings vs. gas boilers on standard tariffs. Octopus Tenant Power amplifies this further.</li>
+
+        <li><strong>Standing charges are often invisible debt.</strong> A 30p/day electricity standing charge (£21/month) can consume 80%+ of a low heating budget before a single kWh is purchased. Deducting standing charges from heating budgets shows the true financial cliff.</li>
+
+        <li><strong>Awaab's Law compliance is thermodynamic, not procedural.</strong> Homes below 16°C will develop condensation and mould regardless of tenant ventilation habits. Investment in fabric insulation and heating capacity is the only pathway to statutory safety.</li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-slate-900 mb-6 mt-12">About Octopus Energy & Healthy Homes Hub</h2>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        <strong>Octopus Energy</strong> is a technology-led energy supplier serving over 8 million UK customers. Through initiatives like Octopus Cosy (heat pump optimisation) and Tenant Power (30% electricity discount for social housing residents), the company is aligning commercial incentives with health equity in the housing sector.
+      </p>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        <strong>Healthy Homes Hub</strong> is a collaborative platform for social housing professionals, academics, and policymakers. Focused on improving health and wellbeing through housing, the Hub curates evidence, connects practitioners, and drives research into thermal comfort, air quality, safety compliance, and retrofit delivery.
+      </p>
+
+      <p class="text-lg text-slate-700 leading-relaxed mb-6">
+        This assessment tool is a shared resource to bridge the gap between policy intent and lived reality for residents in social housing.
+      </p>
+
+    </article>
+
+    <!-- CTA Section -->
+    <div id="tool" class="mt-16 pt-16 border-t border-slate-200">
+      <div class="bg-gradient-to-r from-purple-600 to-emerald-600 text-white p-8 rounded-2xl text-center">
+        <h3 class="text-2xl font-bold mb-4">Ready to Assess Your Portfolio?</h3>
+        <p class="mb-6 opacity-95">Use the interactive tool below to model heating costs, thermal comfort, and compliance scenarios across different properties and tenancy profiles.</p>
+        <a href="dashboard.html" class="inline-block bg-white text-purple-700 font-bold px-8 py-3 rounded-lg hover:bg-slate-100 transition">
+          Open Full Dashboard →
+        </a>
+      </div>
+    </div>
+
+    <!-- Embedded Dashboard Preview (optional) -->
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900 mb-6">Quick Assessment</h2>
+      <p class="text-slate-600 mb-6">Try the tool below or <a href="dashboard.html" class="text-purple-700 font-semibold underline">open the full version</a> for detailed seasonal analysis.</p>
+      <iframe src="dashboard.html" style="width: 100%; height: 800px; border: 1px solid #e2e8f0; border-radius: 12px;"></iframe>
+    </div>
+
+    <!-- Caveat Section -->
+    <div class="mt-16 p-6 bg-slate-100 border border-slate-300 rounded-lg">
+      <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+        <span class="text-lg">⚠️</span> Tool Caveat & Limitations
+      </h3>
+      <p class="text-sm text-slate-700 mb-3">
+        This assessment tool is designed for <strong>indicative modelling and policy discussion</strong> in the social housing context. It provides physics-based estimates of thermal comfort, heating costs, and health compliance based on simplified building models and average climate data.
+      </p>
+      <p class="text-sm text-slate-700 mb-3">
+        <strong>The tool is not:</strong> A professional engineering assessment, a guarantee of actual heating performance, a substitute for Building Regulations compliance analysis, or tailored advice for specific properties or residents. Real-world heating outcomes depend on occupant behaviour, ventilation practices, heating system commissioning, building defects, and weather variation not fully captured here.
+      </p>
+      <p class="text-sm text-slate-700">
+        <strong>For compliance and retrofit decisions:</strong> consult a building surveyor, energy assessor, or qualified heating engineer. This tool is offered to help housing providers understand policy trade-offs and identify priority intervention areas.
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-300 mt-20">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <h4 class="font-bold text-white mb-3">About This Tool</h4>
+          <p class="text-sm">A physics-based thermal assessment for understanding heating, health, and affordability in social housing.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-3">Resources</h4>
+          <ul class="text-sm space-y-1">
+            <li><a href="https://healthyhomeshub.uk" class="hover:text-white">Healthy Homes Hub</a></li>
+            <li><a href="https://octopusenergy.com" class="hover:text-white">Octopus Energy</a></li>
+            <li><a href="https://www.cornwall-insight.com" class="hover:text-white">Cornwall Insight</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-3">Contact</h4>
+          <p class="text-sm">Questions or feedback? Reach out to the team at <a href="mailto:info@healthyhomeshub.uk" class="text-emerald-400">info@healthyhomeshub.uk</a></p>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 pt-8 text-center text-sm">
+        <p>&copy; 2026 Octopus Energy & Healthy Homes Hub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
