@@ -531,7 +531,7 @@
             </h4>
             <p class="text-[11px] text-slate-600">
               <strong>Standard ASHP:</strong> Weather-compensated COP curve benchmarked around 2.8 at 4°C outdoor temp.<br>
-              <strong>Octopus Cosy Heat Pump:</strong> Calibrated with Centre for Net Zero fleet observational data demonstrating an empirical median Seasonal Performance Factor (SPF) of <strong>3.79</strong> when paired with the Cosy smart tariff.
+              <strong>Octopus Cosy Heat Pump:</strong> Calibrated with Centre for Net Zero fleet observational data demonstrating an empirical median Seasonal Performance Factor (SPF) of <strong>3.81</strong> when paired with the Cosy smart tariff.
             </p>
           </div>
 
@@ -709,7 +709,7 @@
     }
 
     function getCosyHeatPumpSPF(extTemp) {
-      return Math.max(2.4, Math.min(4.35, 3.79 + (extTemp - 4) * 0.05));
+      return Math.max(2.4, Math.min(4.35, 3.81 + (extTemp - 4) * 0.05));
     }
 
     function calculateThermalState(budgetOverride = null, hlpOverride = null, extTempOverride = null, systemOverride = null) {
