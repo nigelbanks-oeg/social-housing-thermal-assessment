@@ -115,10 +115,10 @@
           <label class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
             <i data-lucide="thermometer-snowflake" class="w-3.5 h-3.5 text-cyan-600"></i> Outdoor Winter Temp
           </label>
-          <span id="extTempDisplay" class="text-sm font-extrabold text-cyan-800 bg-cyan-100 px-2 py-0.5 rounded border border-cyan-300">2.0°C</span>
+          <span id="extTempDisplay" class="text-sm font-extrabold text-cyan-800 bg-cyan-100 px-2 py-0.5 rounded border border-cyan-300">4.0°C</span>
         </div>
         <div class="mt-2">
-          <input type="range" id="extTempSlider" min="-5" max="12" step="0.5" value="2" oninput="setExtTemp(this.value)" class="w-full h-1.5 bg-slate-200 rounded-lg cursor-pointer">
+          <input type="range" id="extTempSlider" min="-5" max="12" step="0.5" value="4" oninput="setExtTemp(this.value)" class="w-full h-1.5 bg-slate-200 rounded-lg cursor-pointer">
           <div class="flex justify-between items-center mt-2">
             <span class="text-[10px] text-slate-500 font-medium">-5°C</span>
             <div class="flex gap-1">
@@ -173,7 +173,7 @@
               <option value="gas_low">Gas Boiler: Low Flow Temp / Condensing (90% eff.)</option>
               <option value="oil_high">Oil Boiler: High Flow Temp (78% eff.)</option>
               <option value="oil_low">Oil Boiler: Low Flow Temp / Condensing (88% eff.)</option>
-              <option value="std_hp_svt">Standard ASHP on Standard SVT</option>
+              <option value="std_hp_svt">Legacy Heat Pump on Standard SVT</option>
               <option value="electric_e7">Direct Electric on Economy 7 Off-Peak</option>
               <option value="electric_svt">Direct Electric on Standard SVT</option>
             </optgroup>
@@ -182,8 +182,8 @@
               <option value="cosy_hp_cosy">Octopus Cosy Heat Pump on Cosy Smart Tariff (~22p/kWh)</option>
               <option value="cosy_hp_tp">Octopus Cosy Heat Pump on Tenant Power (-30% off SVT)</option>
               <option value="cosy_hp_svt">Octopus Cosy Heat Pump on Standard SVT</option>
-              <option value="std_hp_cosy">Standard ASHP on Cosy Smart Tariff</option>
-              <option value="std_hp_tp">Standard ASHP on Tenant Power (-30% off SVT)</option>
+              <option value="std_hp_cosy">Legacy Heat Pump on Cosy Smart Tariff</option>
+              <option value="std_hp_tp">Legacy Heat Pump on Tenant Power (-30% off SVT)</option>
             </optgroup>
           </select>
         </div>
@@ -527,10 +527,10 @@
 
           <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs">
             <h4 class="font-bold text-indigo-700 text-xs mb-1.5 flex items-center gap-1.5">
-              <i data-lucide="cpu" class="w-3.5 h-3.5"></i> Empirical Heat Pump COP & SPF
+              <i data-lucide="cpu" class="w-3.5 h-3.5"></i> Heat Pump Seasonal Performance Factors (SPF)
             </h4>
             <p class="text-[11px] text-slate-600">
-              <strong>Standard ASHP:</strong> Weather-compensated COP curve benchmarked around 2.8 at 4°C outdoor temp.<br>
+              <strong>Legacy Heat Pump:</strong> Fixed Seasonal Performance Factor (SPF) of <strong>2.8</strong>.<br>
               <strong>Octopus Cosy Heat Pump:</strong> Calibrated with Centre for Net Zero fleet observational data demonstrating an empirical median Seasonal Performance Factor (SPF) of <strong>3.81</strong> when paired with the Cosy smart tariff.
             </p>
           </div>
@@ -566,7 +566,7 @@
       matrixView: 'chart',
       budgetWeekly: 25,
       deductStandingCharge: true,
-      extTemp: 2.0,
+      extTemp: 4.0,
       targetTemp: 21.0,
       internalGainWatts: 250,
       floorArea: 70,
@@ -699,17 +699,17 @@
     const MATRIX_BAR_SYSTEMS = [
       { key: 'gas_high', label: 'Gas Boiler: High Flow (78%)', color: '#ea580c' },
       { key: 'gas_low', label: 'Gas Boiler: Low Flow (90%)', color: '#f59e0b' },
-      { key: 'std_hp_svt', label: 'Std ASHP (Standard SVT)', color: '#0284c7' },
+      { key: 'std_hp_svt', label: 'Legacy HP (Standard SVT)', color: '#0284c7' },
       { key: 'electric_e7', label: 'Direct Electric (Economy 7)', color: '#f97316' },
       { key: 'cosy_hp_tp', label: 'Cosy HP (Tenant Power)', color: '#ec4899' }
     ];
 
-    function getStandardASHPCOP(extTemp) {
-      return Math.max(1.9, Math.min(3.6, 2.8 + (extTemp - 4) * 0.065));
+    function getLegacyHeatPumpSPF(extTemp) {
+      return 2.8; // Legacy heat pump: fixed seasonal performance factor
     }
 
     function getCosyHeatPumpSPF(extTemp) {
-      return Math.max(2.4, Math.min(4.35, 3.81 + (extTemp - 4) * 0.05));
+      return 3.81; // Octopus Cosy Heat Pump: fixed seasonal performance factor
     }
 
     function calculateThermalState(budgetOverride = null, hlpOverride = null, extTempOverride = null, systemOverride = null) {
@@ -758,17 +758,17 @@
       } else if (sysKey === 'std_hp_svt') {
         unitRatePence = tariffs.elecUnit;
         dailySC = tariffs.elecSC;
-        efficiency = getStandardASHPCOP(extTemp);
+        efficiency = getLegacyHeatPumpSPF(extTemp);
         fuelType = 'electric';
       } else if (sysKey === 'std_hp_cosy') {
         unitRatePence = tariffs.cosySmartUnit;
         dailySC = tariffs.elecSC;
-        efficiency = getStandardASHPCOP(extTemp);
+        efficiency = getLegacyHeatPumpSPF(extTemp);
         fuelType = 'electric';
       } else if (sysKey === 'std_hp_tp') {
         unitRatePence = tariffs.elecUnit * 0.70;
         dailySC = tariffs.elecSC;
-        efficiency = getStandardASHPCOP(extTemp);
+        efficiency = getLegacyHeatPumpSPF(extTemp);
         fuelType = 'electric';
       } else if (sysKey === 'cosy_hp_cosy') {
         unitRatePence = tariffs.cosySmartUnit;
@@ -969,7 +969,7 @@
 
       const deliveredFormula = document.getElementById('deliveredHeatFormula');
       if (deliveredFormula) {
-        const effLabel = calc.efficiency >= 1.5 ? `COP ${calc.efficiency.toFixed(2)}` : `${(calc.efficiency * 100).toFixed(0)}% eff.`;
+        const effLabel = calc.efficiency >= 1.5 ? `SPF ${calc.efficiency.toFixed(2)}` : `${(calc.efficiency * 100).toFixed(0)}% eff.`;
         deliveredFormula.innerText = `${calc.unitRatePence.toFixed(2)}p ÷ ${effLabel}`;
       }
 
@@ -1435,15 +1435,15 @@
         { key: 'gas_low', label: 'Gas Boiler: Low Flow (90%)', color: '#f59e0b' },
         { key: 'oil_high', label: 'Oil Boiler: High Flow (78%)', color: '#475569' },
         { key: 'oil_low', label: 'Oil Boiler: Low Flow (88%)', color: '#64748b' },
-        { key: 'std_hp_svt', label: 'Std ASHP (Standard SVT)', color: '#0284c7' },
+        { key: 'std_hp_svt', label: 'Legacy HP (Standard SVT)', color: '#0284c7' },
         { key: 'electric_e7', label: 'Direct Electric (Economy 7)', color: '#f97316' },
         { key: 'electric_svt', label: 'Direct Electric (SVT)', color: '#f43f5e' },
         { key: 'zero_bills', label: '🐙 Zero Bills Home', color: '#059669' },
         { key: 'cosy_hp_cosy', label: '🐙 Cosy HP (Cosy Tariff)', color: '#8b5cf6' },
         { key: 'cosy_hp_tp', label: '🐙 Cosy HP (Tenant Power)', color: '#ec4899' },
         { key: 'cosy_hp_svt', label: '🐙 Cosy HP (SVT)', color: '#a855f7' },
-        { key: 'std_hp_cosy', label: '🐙 Std ASHP (Cosy Tariff)', color: '#6366f1' },
-        { key: 'std_hp_tp', label: '🐙 Std ASHP (Tenant Power)', color: '#0284c7' }
+        { key: 'std_hp_cosy', label: '🐙 Legacy HP (Cosy Tariff)', color: '#6366f1' },
+        { key: 'std_hp_tp', label: '🐙 Legacy HP (Tenant Power)', color: '#0284c7' }
       ];
 
       renderCostMatrixTable(archetypes, fullSystemDefs);
@@ -1708,8 +1708,8 @@
 
       if (bSlider) bSlider.value = 25;
       if (bDisplay) bDisplay.innerText = '£25/wk';
-      if (tSlider) tSlider.value = 2.0;
-      if (tDisplay) tDisplay.innerText = '2.0°C';
+      if (tSlider) tSlider.value = 4.0;
+      if (tDisplay) tDisplay.innerText = '4.0°C';
       if (fSlider) fSlider.value = 70;
       if (fDisplay) fDisplay.innerText = '70 m²';
       if (insSelect) insSelect.value = 'typical';
